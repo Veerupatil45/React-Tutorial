@@ -15,9 +15,21 @@ export default function TextForm(props) {
         setText(newText)
     }
     const handleClearClick=()=>{
-        console.log("Clear text clicked" + text);
+        console.log("Clear text clicked " + text);
         let newText='';
         setText(newText)
+    }
+    const handleExtraSpaces=()=>{
+        let newText=text.split(/[ ]+/);
+        setText(newText.join(" "))
+    }
+
+    const handleCopy=()=>{
+        console.log("Copy clicked");
+        var text=document.getElementById("mybox");
+        text.select();
+        
+        navigator.clipboard.writeText(text.value);
     }
 
     const handleOnChange=(event)=>{
@@ -39,6 +51,9 @@ export default function TextForm(props) {
         <button className="btn btn-primary mx-1" onClick={handleUpClick}>Convert to uppercase</button>
         <button className="btn btn-primary mx-1" onClick={handleLowClick}>Convert to lowercase</button>
         <button className="btn btn-primary mx-1" onClick={handleClearClick}>Clear Text</button>
+        <button className="btn btn-primary mx-1" onClick={handleCopy}>Copy Text</button>
+        <button className="btn btn-primary mx-1" onClick={handleExtraSpaces}>Clear Extra Spaces</button>
+        
     </div>
     <div className="container my-3">
         <h1>Your Text Summary</h1>
