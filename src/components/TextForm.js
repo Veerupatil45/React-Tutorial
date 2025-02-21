@@ -7,29 +7,34 @@ export default function TextForm(props) {
         console.log("uppercase was clicked" + text);
         let newText=text.toUpperCase();
         setText(newText)
+        props.showAlert("Converted to uppercase!","Success");
+        
     }
 
     const handleLowClick=()=>{
         console.log("uppercase was clicked" + text);
         let newText=text.toLowerCase();
         setText(newText)
+        props.showAlert("Converted to lowercase!","Success");
     }
     const handleClearClick=()=>{
         console.log("Clear text clicked " + text);
         let newText='';
         setText(newText)
+        props.showAlert("Text cleared!","Success");
     }
     const handleExtraSpaces=()=>{
         let newText=text.split(/[ ]+/);
         setText(newText.join(" "))
+        props.showAlert("Extra spaces removed!","Success");
     }
 
     const handleCopy=()=>{
         console.log("Copy clicked");
         var text=document.getElementById("mybox");
         text.select();
-        
         navigator.clipboard.writeText(text.value);
+        props.showAlert("Text copied to clipboard!","Success");
     }
 
     const handleOnChange=(event)=>{
@@ -45,7 +50,7 @@ export default function TextForm(props) {
         <h1> {props.heading}</h1>
         <div className="mb-3" >
             
-        <textarea className="form-control" value={text} onChange={handleOnChange} style={{backgroundColor: props.mode==='dark'?'#13466e':'white', color: props.mode==='dark'?'white':'#042743'}} id="myBox" rows="8"></textarea>
+        <textarea className="form-control" value={text} onChange={handleOnChange} style={{backgroundColor: props.mode==='dark'?'#13466e':'white', color: props.mode==='dark'?'white':'#042743'}} id="mybox" rows="8"></textarea>
         </div>
         <button className="btn btn-primary mx-1" onClick={handleUpClick}>Convert to uppercase</button>
         <button className="btn btn-primary mx-1" onClick={handleLowClick}>Convert to lowercase</button>
