@@ -4,6 +4,7 @@ import './App.css';
 // import About from './components/About';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
+import Alert from './components/Alert';
 
 function App() {
   const [mode, setMode]=useState('light');
@@ -20,6 +21,7 @@ function App() {
     <>
    
    <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode}/>
+   <Alert alert="this is alert"/>
    <div className='container'>
     <TextForm heading="Enter the text to analyze below" ></TextForm>
    {/* <About/> */}
